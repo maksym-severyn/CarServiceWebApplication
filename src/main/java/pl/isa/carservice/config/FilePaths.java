@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 @Getter
 public class FilePaths {
 
-    @Value("${spring.path.active-cars:src/main/resources/active/active-cars.json}")
+    @Value("${spring.path.active-cars}")
     private String activeCarsPath;
 
-    @Value("${spring.path.dir.fixed-cars:src/main/resources/cars/fixed/}")
+    @Value("${spring.path.dir.fixed-cars}")
     private String fixedCarsDirPath;
 }
