@@ -17,6 +17,7 @@ public class Car {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate carAcceptedDate;
     private boolean isFixed;
+    private LocalDate dateOfFix;
 
     public Car(String registrationNumber, String name, Integer manufactureYear, LocalDate carAcceptedDate) {
         this.registrationNumber = registrationNumber;
