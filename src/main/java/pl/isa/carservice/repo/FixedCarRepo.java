@@ -13,7 +13,13 @@ import pl.isa.carservice.entity.Car;
 import pl.isa.carservice.exception.CarNotFoundException;
 import pl.isa.carservice.util.FileActions;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Repository
 @NoArgsConstructor
@@ -35,12 +41,25 @@ public class FixedCarRepo implements CarRepository {
     @Override
     @EventListener(ApplicationReadyEvent.class)
     public void getCarListFromBase() {
-        this.fixedCarList = carFileActions.readObjectListFromDir(filePaths.getFixedCarsDirPath(), Car.class);
+        List<ArrayList<Car>> cars = carFileActions.readListOfObjectListsFromDir(filePaths.getFixedCarsDirPath(), Car.class);
+        List<Car> tempCars = new ArrayList<>();
+        cars.forEach(tempCars::addAll);
+        fixedCarList = tempCars;
     }
 
     @Override
     public void saveCarListToBase() {
-        carFileActions.writeObjectListToFile(filePaths.getFixedCarsDirPath(), this.fixedCarList);
+        Set<LocalDate> dateSet = generateUniqueCarFixDates();
+        dateSet.forEach(date -> {
+            List<Car> cars = findCarsFromListByFixDate(date);
+            carFileActions.writeObjectListToFile(filePaths.getFixedCarsDirPath() + date.toString() + ".json" , cars);
+        });
+    }
+
+    private Set<LocalDate> generateUniqueCarFixDates() {
+        Set<LocalDate> dateSet = new HashSet<>();
+        this.fixedCarList.forEach(c -> dateSet.add(c.getDateOfFix()));
+        return dateSet;
     }
 
     @Override
@@ -53,6 +72,12 @@ public class FixedCarRepo implements CarRepository {
                 });
     }
 
+    public List<Car> findCarsFromListByFixDate(LocalDate fixDate) {
+        return this.fixedCarList.stream()
+                .filter(c -> Period.between(c.getDateOfFix(), fixDate).getDays() == 0)
+                .collect(Collectors.<Car>toList());
+    }
+
     @Override
     public void deleteCarFromList(Car car) {
         this.fixedCarList.remove(car);
@@ -61,5 +86,10 @@ public class FixedCarRepo implements CarRepository {
     @Override
     public void addCarToList(Car car) {
         this.fixedCarList.add(car);
+    }
+
+    @Override
+    public boolean contains(Car car) {
+        return fixedCarList.contains(car);
     }
 }

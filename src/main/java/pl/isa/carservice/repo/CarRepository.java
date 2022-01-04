@@ -8,4 +8,5 @@ public interface CarRepository {
     Car findCarFromListByRegNumb(String registrationNumber);
     void deleteCarFromList(Car car);
     void addCarToList(Car car);
+    boolean contains(Car car);
 }

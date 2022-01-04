@@ -1,9 +1,11 @@
 package pl.isa.carservice.util;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import pl.isa.carservice.entity.Car;
 
 import java.io.File;
 import java.io.FileReader;
@@ -34,17 +36,18 @@ public class FileActions<E> {
         }
     }
 
-    public List<E> readObjectListFromDir(String path, Class<E> elementClass) {
+    public List<ArrayList<E>> readListOfObjectListsFromDir(String path, Class<E> elementClass) {
         File file = new File(path);
         ArrayList<File> fileBase = null;
         if (file.isDirectory()){
             fileBase = new ArrayList<>(Arrays.asList(Objects.requireNonNull(file.listFiles())));
         }
-        ArrayList<E> objects = new ArrayList<>();
+        List<ArrayList<E>> objects = new ArrayList<>();
+        CollectionType listType = mapper.getTypeFactory().constructCollectionType(ArrayList.class, elementClass);
         if (fileBase != null) {
             fileBase.forEach(j -> {
                 try {
-                    objects.add(mapper.readValue(j, elementClass));
+                    objects.add(mapper.readValue(j, listType));
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
@@ -56,6 +59,14 @@ public class FileActions<E> {
     public void writeObjectListToFile(String path, List<E> objectList) {
         try {
             mapper.writeValue(new FileWriter(path), objectList);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void writeObjectToFile(String path, Class<E> elementClass) {
+        try {
+            mapper.writeValue(new FileWriter(path), elementClass);
         } catch (IOException ex) {
             ex.printStackTrace();
         }

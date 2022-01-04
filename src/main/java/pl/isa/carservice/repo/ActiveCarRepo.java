@@ -62,4 +62,9 @@ public class ActiveCarRepo implements CarRepository {
     public void addCarToList(Car car) {
         this.activeCarList.add(car);
     }
+
+    @Override
+    public boolean contains(Car car) {
+        return activeCarList.contains(car);
+    }
 }
