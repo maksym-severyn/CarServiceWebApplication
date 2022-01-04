@@ -1,0 +1,15 @@
+[ {
+  "registrationNumber" : "asd 654",
+  "name" : "Audi",
+  "manufactureYear" : 2015,
+  "carAcceptedDate" : "2022-01-02",
+  "dateOfFix" : null,
+  "fixed" : false
+}, {
+  "registrationNumber" : "abc 557",
+  "name" : "BMW",
+  "manufactureYear" : 2018,
+  "carAcceptedDate" : "2022-01-01",
+  "dateOfFix" : null,
+  "fixed" : false
+} ]
