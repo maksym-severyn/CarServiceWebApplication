@@ -7,6 +7,7 @@ import pl.isa.carservice.comparators.AcceptedDateComparator;
 import pl.isa.carservice.entity.Car;
 import pl.isa.carservice.repo.CarRepository;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -26,9 +27,9 @@ public class ActiveCarService implements CarService {
         return carRepo.returnCarList();
     }
 
-    public List<Car> getAllCarsSortedByAcceptedDate() {
+    public List<Car> getAllCarsSortedByAcceptedDateAsc() {
         List<Car> cars = getAllCars();
-        cars.sort(acceptedDateComparator);
+        cars.sort(acceptedDateComparator.reversed());
         return cars;
     }
 }

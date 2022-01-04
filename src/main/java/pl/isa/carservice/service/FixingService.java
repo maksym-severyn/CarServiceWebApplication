@@ -8,13 +8,13 @@ import pl.isa.carservice.repo.CarRepository;
 import java.time.LocalDate;
 
 @Service
-public class FixingCarService implements MovableService {
+public class FixingService implements MovableService {
 
     private final CarRepository carRepositoryActive;
     private final CarRepository carRepositoryFixed;
 
-    public FixingCarService(@Qualifier("activeCarRepo") CarRepository carRepositoryActive,
-                            @Qualifier("fixedCarRepo") CarRepository carRepositoryFixed) {
+    public FixingService(@Qualifier("activeCarRepo") CarRepository carRepositoryActive,
+                         @Qualifier("fixedCarRepo") CarRepository carRepositoryFixed) {
         this.carRepositoryActive = carRepositoryActive;
         this.carRepositoryFixed = carRepositoryFixed;
     }
