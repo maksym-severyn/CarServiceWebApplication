@@ -39,6 +39,11 @@ public class ActiveCarRepo implements CarRepository {
     }
 
     @Override
+    public List<Car> returnCarList() {
+        return getActiveCarList();
+    }
+
+    @Override
     public void saveCarListToBase() {
         carFileActions.writeObjectListToFile(filePaths.getActiveCarsPath(), this.activeCarList);
     }

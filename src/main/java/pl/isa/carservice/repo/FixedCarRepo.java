@@ -48,6 +48,11 @@ public class FixedCarRepo implements CarRepository {
     }
 
     @Override
+    public List<Car> returnCarList() {
+        return getFixedCarList();
+    }
+
+    @Override
     public void saveCarListToBase() {
         Set<LocalDate> dateSet = generateUniqueCarFixDates();
         dateSet.forEach(date -> {
