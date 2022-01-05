@@ -26,15 +26,16 @@
                     </li>
 
                     <li th:class="'nav-item'">
-                        <a th:class="'nav-link'" th:href="@{/b}" th:text="#{application.navbar.add-new-car}"></a>
+                        <a th:class="'nav-link'" th:href="@{/}" th:text="#{application.navbar.add-new-car}"></a>
                     </li>
 
                     <li th:class="'nav-item dropdown'">
-                        <a th:class="'nav-link dropdown-toggle'" data-toggle="dropdown" role="button" th:href="@{/}"
+                        <a  th:class="${activePage} == 'cars-fixed' ? 'nav-link dropdown-toggle active' : 'nav-link dropdown-toggle'"
+                            data-toggle="dropdown" role="button" th:href="@{/}"
                            th:text="#{application.navbar.fix}"></a>
                         <div th:class="'dropdown-menu'">
                             <a th:class="'dropdown-item'" th:href="@{/}" th:text="#{application.navbar.fix-car}"></a>
-                            <a th:class="'dropdown-item'" th:href="@{/}" th:text="#{application.navbar.fixed-car}"></a>
+                            <a th:class="'dropdown-item'" th:href="@{/cars/fixed}" th:text="#{application.navbar.fixed-car}"></a>
                         </div>
                     </li>
 

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title th:text="#{car.active.title}"></title>
+    <title th:text="#{car.fixed.title}"></title>
 
     <!--/* Bootstrap CSS */-->
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
@@ -13,11 +13,10 @@
 </head>
 
 <body th:class="'bg-light p-3'">
-
 <div th:insert="~{fragments/navbar :: mynavbar}"></div>
 <hr>
-<div th:class="'container'">
 
+<div th:class="'container'">
     <div th:class="'row'">
 
         <table th:class="'table table-striped table-bordered text-center'">
@@ -27,24 +26,16 @@
                 <th th:text="#{car.registration-number}"></th>
                 <th th:text="#{car.name}"></th>
                 <th th:text="#{car.manufacture-year}"></th>
-                <th th:text="#{car.accepted-date}"></th>
-                <th th:text="''"></th>
+                <th th:text="#{car.fix-date}"></th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="car, iterStat : ${activeCars}">
+            <tr th:each="car, iterStat : ${fixedCars}">
                 <td th:text="${iterStat.count}"></td>
                 <td th:text="${car.registrationNumber}"></td>
                 <td th:text="${car.name}"></td>
                 <td th:text="${car.manufactureYear}"></td>
-                <td th:text="${car.carAcceptedDate}"></td>
-                <td>
-                    <div th:class="'col-12 fix-button text-center'">
-                        <form th:action="@{/cars/fix/{regNumb}(regNumb=${car.registrationNumber})}" th:method="put">
-                            <button type="submit" th:class="'btn btn-xs btn-secondary'" th:text="#{button.fix}"></button>
-                        </form>
-                    </div>
-                </td>
+                <td th:text="${car.dateOfFix}"></td>
             </tr>
             </tbody>
         </table>

@@ -1,26 +1,26 @@
 [ {
-  "registrationNumber" : "asd 654",
+  "registrationNumber" : "ASD 654",
   "name" : "Audi",
   "manufactureYear" : 2015,
   "carAcceptedDate" : "2022-01-02",
   "dateOfFix" : null,
   "fixed" : false
 }, {
-  "registrationNumber" : "abc 557",
+  "registrationNumber" : "ABC 557",
   "name" : "BMW",
   "manufactureYear" : 2018,
   "carAcceptedDate" : "2022-01-01",
   "dateOfFix" : null,
   "fixed" : false
 }, {
-  "registrationNumber" : "abc 111",
+  "registrationNumber" : "ABC 111",
   "name" : "BMW",
   "manufactureYear" : 2018,
   "carAcceptedDate" : "2022-01-01",
   "dateOfFix" : null,
   "fixed" : false
 }, {
-  "registrationNumber" : "abc 129",
+  "registrationNumber" : "ATY 129",
   "name" : "Honda",
   "manufactureYear" : 2013,
   "carAcceptedDate" : "2022-01-03",
