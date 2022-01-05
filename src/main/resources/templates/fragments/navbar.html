@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Navbar</title>
+</head>
+<body>
+
+<mynavbar>
+    <header>
+        <nav th:class="'navbar navbar-light navbar-expand-md'" style="background-color: #e1e2e2;">
+            <a th:class="'navbar-brand mr-3'" th:href="@{/}">
+                <img th:class="'logo d-none d-md-inline-block mr-1 align-bottom'" th:src="@{/img/car-logo.png}"
+                     th:alt="''"
+                     th:text="#{application.navbar.company.name}">
+            </a>
+
+            <button th:class="'navbar-toggler'" th:type="'button'" data-toggle="collapse" data-target="#mainmenu">
+                <span th:class="'navbar-toggler-icon'"></span>
+            </button>
+
+            <div th:class="'collapse navbar-collapse'" th:id="'mainmenu'">
+                <ul th:class="'navbar-nav'">
+                    <li th:class="${activePage} == 'cars-to-fix' ? 'nav-item active' : 'nav-item'">
+                        <a th:class="'nav-link'" th:href="@{/}" th:text="#{application.navbar.car-to-fix}"></a>
+                    </li>
+
+                    <li th:class="'nav-item'">
+                        <a th:class="'nav-link'" th:href="@{/b}" th:text="#{application.navbar.add-new-car}"></a>
+                    </li>
+
+                    <li th:class="'nav-item dropdown'">
+                        <a th:class="'nav-link dropdown-toggle'" data-toggle="dropdown" role="button" th:href="@{/}"
+                           th:text="#{application.navbar.fix}"></a>
+                        <div th:class="'dropdown-menu'">
+                            <a th:class="'dropdown-item'" th:href="@{/}" th:text="#{application.navbar.fix-car}"></a>
+                            <a th:class="'dropdown-item'" th:href="@{/}" th:text="#{application.navbar.fixed-car}"></a>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+    </header>
+</mynavbar>
+
+</body>
+</html>
