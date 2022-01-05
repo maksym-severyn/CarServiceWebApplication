@@ -26,13 +26,13 @@ public class FixingService implements MovableFixingService {
         fixed.setFixed(true);
         fixed.setDateOfFix(LocalDate.now());
         moveCarBetweenLists(fixed, carRepositoryActive, carRepositoryFixed);
+        actualizeBases();
     }
 
     private void moveCarBetweenLists(Car car, CarRepository source, CarRepository destination) {
         if (source.contains(car) && !(destination.contains(car))) {
             destination.addCarToList(car);
             source.deleteCarFromList(car);
-            actualizeBases();
         } else {
             throw new CarNotFoundException(car.getRegistrationNumber());
         }

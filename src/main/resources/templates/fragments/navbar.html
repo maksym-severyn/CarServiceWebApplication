@@ -25,8 +25,8 @@
                         <a th:class="'nav-link'" th:href="@{/}" th:text="#{application.navbar.car-to-fix}"></a>
                     </li>
 
-                    <li th:class="'nav-item'">
-                        <a th:class="'nav-link'" th:href="@{/}" th:text="#{application.navbar.add-new-car}"></a>
+                    <li th:class="${activePage} == 'new-car' ? 'nav-item active' : 'nav-item'">
+                        <a th:class="'nav-link'" th:href="@{/cars/new}" th:text="#{application.navbar.add-new-car}"></a>
                     </li>
 
                     <li th:class="'nav-item dropdown'">

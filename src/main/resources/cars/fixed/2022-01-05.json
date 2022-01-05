@@ -1,0 +1,15 @@
+[ {
+  "registrationNumber" : "ATY 129",
+  "name" : "HONDA",
+  "manufactureYear" : 2013,
+  "carAcceptedDate" : "2022-01-03",
+  "dateOfFix" : "2022-01-05",
+  "fixed" : true
+}, {
+  "registrationNumber" : "qweqwe123",
+  "name" : "CITROEN",
+  "manufactureYear" : 2015,
+  "carAcceptedDate" : "2022-01-05",
+  "dateOfFix" : "2022-01-05",
+  "fixed" : true
+} ]

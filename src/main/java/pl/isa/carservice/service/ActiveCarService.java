@@ -40,5 +40,6 @@ public class ActiveCarService implements CarService {
 
     public void addCarToList(Car car) {
         carRepo.addCarToList(car);
+        carRepo.saveCarListToBase();
     }
 }

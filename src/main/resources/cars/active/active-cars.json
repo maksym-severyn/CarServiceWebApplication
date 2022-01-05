@@ -1,11 +1,4 @@
 [ {
-  "registrationNumber" : "ASD 654",
-  "name" : "AUDI",
-  "manufactureYear" : 2015,
-  "carAcceptedDate" : "2022-01-02",
-  "dateOfFix" : null,
-  "fixed" : false
-}, {
   "registrationNumber" : "ABC 557",
   "name" : "BMW",
   "manufactureYear" : 2018,
@@ -20,10 +13,10 @@
   "dateOfFix" : null,
   "fixed" : false
 }, {
-  "registrationNumber" : "ATY 129",
-  "name" : "HONDA",
-  "manufactureYear" : 2013,
-  "carAcceptedDate" : "2022-01-03",
+  "registrationNumber" : "ASD 654",
+  "name" : "AUDI",
+  "manufactureYear" : 2015,
+  "carAcceptedDate" : "2022-01-02",
   "dateOfFix" : null,
   "fixed" : false
 } ]

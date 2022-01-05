@@ -31,6 +31,7 @@ public class ActiveCarController {
     @GetMapping("cars/new")
     public String fillNewCar(Model model) {
         model.addAttribute("newCar", new Car());
+        model.addAttribute("activePage", "new-car");
         return "car-form";
     }
 

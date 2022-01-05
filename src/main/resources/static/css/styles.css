@@ -21,3 +21,7 @@
 .table td, .table th {
     vertical-align: middle;
 }
+
+.active {
+    font-weight: bold;
+}

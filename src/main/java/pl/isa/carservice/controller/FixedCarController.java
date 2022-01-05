@@ -32,8 +32,10 @@ public class FixedCarController {
     }
 
     @PutMapping("fix/{nr}")
-    public String fixCar(@PathVariable(name = "nr") String registrationNumber) {
+    public ModelAndView fixCar(@PathVariable(name = "nr") String registrationNumber) {
+        ModelAndView mav = new ModelAndView("fixing-car-success");
+        mav.addObject("activePage", "cars-fixed");
         fixingService.fixCar(registrationNumber);
-        return "fixing-car-success";
+        return mav;
     }
 }
