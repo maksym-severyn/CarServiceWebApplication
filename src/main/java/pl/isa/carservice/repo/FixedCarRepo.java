@@ -42,9 +42,9 @@ public class FixedCarRepo implements CarRepository {
     @EventListener(ApplicationReadyEvent.class)
     public void getCarListFromBase() {
         List<ArrayList<Car>> cars = carFileActions.readListOfObjectListsFromDir(filePaths.getFixedCarsDirPath(), Car.class);
-        List<Car> tempCars = new ArrayList<>();
-        cars.forEach(tempCars::addAll);
-        fixedCarList = tempCars;
+        fixedCarList = cars.stream()
+                .flatMap(l -> l.stream())
+                .collect(Collectors.toList());
     }
 
     @Override

@@ -3,6 +3,7 @@ package pl.isa.carservice;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 import pl.isa.carservice.entity.Car;
 import pl.isa.carservice.service.ActiveCarService;
 import pl.isa.carservice.service.CarService;
@@ -19,8 +20,10 @@ public class ActiveCarAPI {
     }
 
     @GetMapping()
-    public List<Car> getAllActiveSortedByAcceptedDate() {
-        return ((ActiveCarService) activeCarService).getAllCarsSortedByAcceptedDateAsc();
+    public ModelAndView getAllActiveSortedByAcceptedDate() {
+        ModelAndView mav = new ModelAndView("active-cars");
+        mav.addObject("activeCars", ((ActiveCarService) activeCarService).getAllCarsSortedByAcceptedDateAsc());
+        return mav;
     }
 
 }
