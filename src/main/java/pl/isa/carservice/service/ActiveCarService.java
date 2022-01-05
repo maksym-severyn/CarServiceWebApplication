@@ -37,4 +37,8 @@ public class ActiveCarService implements CarService {
         cars.sort(acceptedDateComparator.reversed());
         return cars;
     }
+
+    public void addCarToList(Car car) {
+        carRepo.addCarToList(car);
+    }
 }
