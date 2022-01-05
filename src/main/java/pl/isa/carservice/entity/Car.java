@@ -12,14 +12,14 @@ import java.util.Objects;
 @AllArgsConstructor
 public class Car {
     private String registrationNumber;
-    private String name;
+    private CarName name;
     private Integer manufactureYear;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate carAcceptedDate;
     private boolean isFixed;
     private LocalDate dateOfFix;
 
-    public Car(String registrationNumber, String name, Integer manufactureYear, LocalDate carAcceptedDate) {
+    public Car(String registrationNumber, CarName name, Integer manufactureYear, LocalDate carAcceptedDate) {
         this.registrationNumber = registrationNumber;
         this.name = name;
         this.manufactureYear = manufactureYear;

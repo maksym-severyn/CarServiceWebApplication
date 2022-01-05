@@ -1,13 +1,13 @@
 [ {
   "registrationNumber" : "OIU 123",
-  "name" : "Peugeot",
+  "name" : "PEUGEOT",
   "manufactureYear" : 2008,
   "carAcceptedDate" : "2021-12-25",
   "dateOfFix" : "2022-01-03",
   "fixed" : true
 }, {
   "registrationNumber" : "FNI 837",
-  "name" : "Opel",
+  "name" : "OPEL",
   "manufactureYear" : 2003,
   "carAcceptedDate" : "2021-12-14",
   "dateOfFix" : "2022-01-03",

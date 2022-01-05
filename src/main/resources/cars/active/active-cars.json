@@ -1,6 +1,6 @@
 [ {
   "registrationNumber" : "ASD 654",
-  "name" : "Audi",
+  "name" : "AUDI",
   "manufactureYear" : 2015,
   "carAcceptedDate" : "2022-01-02",
   "dateOfFix" : null,
@@ -21,7 +21,7 @@
   "fixed" : false
 }, {
   "registrationNumber" : "ATY 129",
-  "name" : "Honda",
+  "name" : "HONDA",
   "manufactureYear" : 2013,
   "carAcceptedDate" : "2022-01-03",
   "dateOfFix" : null,
