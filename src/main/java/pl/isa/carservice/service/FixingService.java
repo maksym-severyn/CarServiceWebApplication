@@ -3,12 +3,13 @@ package pl.isa.carservice.service;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import pl.isa.carservice.entity.Car;
+import pl.isa.carservice.exception.CarNotFoundException;
 import pl.isa.carservice.repo.CarRepository;
 
 import java.time.LocalDate;
 
 @Service
-public class FixingService implements MovableService {
+public class FixingService implements MovableFixingService {
 
     private final CarRepository carRepositoryActive;
     private final CarRepository carRepositoryFixed;
@@ -19,21 +20,21 @@ public class FixingService implements MovableService {
         this.carRepositoryFixed = carRepositoryFixed;
     }
 
-    public boolean fixCar(String registrationNumber) {
+    @Override
+    public void fixCar(String registrationNumber) {
         Car fixed = carRepositoryActive.findCarFromListByRegNumb(registrationNumber);
         fixed.setFixed(true);
         fixed.setDateOfFix(LocalDate.now());
-        return moveCarBetweenLists(fixed, carRepositoryActive, carRepositoryFixed);
+        moveCarBetweenLists(fixed, carRepositoryActive, carRepositoryFixed);
     }
 
-    private boolean moveCarBetweenLists(Car car, CarRepository source, CarRepository destination) {
+    private void moveCarBetweenLists(Car car, CarRepository source, CarRepository destination) {
         if (source.contains(car) && !(destination.contains(car))) {
             destination.addCarToList(car);
             source.deleteCarFromList(car);
             actualizeBases();
-            return true;
         } else {
-            return false;
+            throw new CarNotFoundException(car.getRegistrationNumber());
         }
     }
 

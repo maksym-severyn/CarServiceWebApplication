@@ -27,7 +27,12 @@ public class FixedCarService implements CarService {
         return carRepo.returnCarList();
     }
 
-    public List<Car> getAllCarsSortedByFixDateDesc() {
+    /**
+     * All fixed cars sorted by fix date (descending)
+     * @return list of all fixed cars sorted by fix date (descending)
+     */
+    @Override
+    public List<Car> getAllCarsSorted() {
         List<Car> cars = getAllCars();
         cars.sort(fixDateComparator);
         return cars;

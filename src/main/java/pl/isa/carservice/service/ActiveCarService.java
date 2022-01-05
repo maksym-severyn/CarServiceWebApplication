@@ -27,7 +27,12 @@ public class ActiveCarService implements CarService {
         return carRepo.returnCarList();
     }
 
-    public List<Car> getAllCarsSortedByAcceptedDateAsc() {
+    /**
+     * All fixed cars sorted by accepted date (ascending)
+     * @return list of all fixed cars sorted by accepted date (ascending)
+     */
+    @Override
+    public List<Car> getAllCarsSorted() {
         List<Car> cars = getAllCars();
         cars.sort(acceptedDateComparator.reversed());
         return cars;
