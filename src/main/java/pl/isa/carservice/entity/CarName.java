@@ -75,9 +75,9 @@ public enum CarName {
     VOLVO("Volvo"),
     INNA("Inna");
 
-    private final String name;
+    private final String nameOfCar;
 
-    CarName(String name) {
-        this.name = name;
+    CarName(String nameOfCar) {
+        this.nameOfCar = nameOfCar;
     }
 }

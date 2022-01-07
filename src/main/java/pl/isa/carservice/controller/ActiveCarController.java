@@ -3,20 +3,18 @@ package pl.isa.carservice.controller;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.isa.carservice.entity.Car;
 import pl.isa.carservice.service.ActiveCarService;
-import pl.isa.carservice.service.CarService;
+import pl.isa.carservice.service.ActiveCarServiceInterface;
 
 @Controller
 public class ActiveCarController {
 
-    private final CarService activeCarService;
+    private final ActiveCarServiceInterface activeCarService;
 
-    public ActiveCarController(@Qualifier("activeCarService") CarService activeCarService) {
+    public ActiveCarController(@Qualifier("activeCarService") ActiveCarServiceInterface activeCarService) {
         this.activeCarService = activeCarService;
     }
 
@@ -39,6 +37,14 @@ public class ActiveCarController {
     public String addNewCar(@ModelAttribute Car car) {
         ((ActiveCarService) activeCarService).addCarToList(car);
         return "car-form-success";
+    }
+
+    @GetMapping("search")
+    public ModelAndView searchActiveCarsByParam(@RequestParam(value = "param", required = false, defaultValue = "") String parameter) {
+        ModelAndView mav = new ModelAndView("search-cars-results");
+        mav.addObject("activeCars", activeCarService.searchCarsByParam(parameter));
+        mav.addObject("activePage", "found-cars");
+        return mav;
     }
 
 }

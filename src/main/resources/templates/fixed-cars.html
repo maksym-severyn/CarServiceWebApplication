@@ -33,7 +33,7 @@
             <tr th:each="car, iterStat : ${fixedCars}">
                 <td th:text="${iterStat.count}"></td>
                 <td th:text="${car.registrationNumber}"></td>
-                <td th:text="${car.name.name}"></td>
+                <td th:text="${car.name.nameOfCar}"></td>
                 <td th:text="${car.manufactureYear}"></td>
                 <td th:text="${car.dateOfFix}"></td>
             </tr>

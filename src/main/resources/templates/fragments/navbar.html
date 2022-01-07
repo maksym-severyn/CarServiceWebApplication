@@ -1,16 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Navbar</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title th:text="#{application.navbar.title}"></title>
+
+    <!--/* Bootstrap CSS */-->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+
 </head>
 <body>
 
 <mynavbar>
     <header>
-        <nav th:class="'navbar navbar-light navbar-expand-md'" style="background-color: #e1e2e2;">
+        <nav th:class="'navbar navbar-light navbar-expand-lg'" style="background-color: #e1e2e2;">
             <a th:class="'navbar-brand mr-3'" th:href="@{/}">
-                <img th:class="'logo d-none d-md-inline-block mr-1 align-bottom'" th:src="@{/img/car-logo.png}"
+                <img th:class="'logo d-none d-lg-inline-block mr-1 align-bottom'" th:src="@{/img/car-logo.png}"
                      th:alt="''"
                      th:text="#{application.navbar.company.name}">
             </a>
@@ -20,7 +27,7 @@
             </button>
 
             <div th:class="'collapse navbar-collapse'" th:id="'mainmenu'">
-                <ul th:class="'navbar-nav'">
+                <ul th:class="'navbar-nav mr-auto'">
                     <li th:class="${activePage} == 'cars-to-fix' ? 'nav-item active' : 'nav-item'">
                         <a th:class="'nav-link'" th:href="@{/}" th:text="#{application.navbar.car-to-fix}"></a>
                     </li>
@@ -39,7 +46,16 @@
                         </div>
                     </li>
 
+                    <li th:if="${activePage} == 'cars-fixed'" th:class="'d-none d-xl-flex'" >
+                        <a th:class="'nav-link disabled'" th:text="'|'"></a>
+                        <a th:class="'nav-link disabled active'" th:href="@{/cars/new}" th:text="#{application.navbar.fixed-car}"></a>
+                    </li>
                 </ul>
+
+                <form th:class="'form-inline'" th:action="@{/search}" th:method="get">
+                    <input th:name="'param'"  th:class="'form-control mr-1'" th:type="'search'" th:placeholder="#{application.navbar.search-car}">
+                    <button th:class="'btn btn-light'" th:type="'submit'" th:text="#{application.navbar.search}"></button>
+                </form>
             </div>
         </nav>
     </header>

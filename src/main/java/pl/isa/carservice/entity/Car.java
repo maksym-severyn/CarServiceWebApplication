@@ -40,4 +40,12 @@ public class Car {
     public int hashCode() {
         return Objects.hash(registrationNumber.toLowerCase().replaceAll("\\s",""));
     }
+
+    @Override
+    public String toString() {
+        return this.registrationNumber
+                + ' ' + this.name.getNameOfCar()
+                + ' ' + this.manufactureYear.toString()
+                + ' ' + this.carAcceptedDate;
+    }
 }

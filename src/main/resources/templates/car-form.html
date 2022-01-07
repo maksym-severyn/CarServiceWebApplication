@@ -48,7 +48,7 @@
                                         th:selected
                                         hidden></option>
                                 <option th:each="carName : ${T(pl.isa.carservice.entity.CarName).values()}"
-                                        th:value="${carName}" th:text="${carName.name}"></option>
+                                        th:value="${carName}" th:text="${carName.nameOfCar}"></option>
                             </select>
                         </td>
                     </tr>
