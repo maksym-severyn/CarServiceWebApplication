@@ -77,7 +77,7 @@ public class FixedCarRepo implements CarRepository {
                 });
     }
 
-    public List<Car> findCarsFromListByFixDate(LocalDate fixDate) {
+    private List<Car> findCarsFromListByFixDate(LocalDate fixDate) {
         return this.fixedCarList.stream()
                 .filter(c -> Period.between(c.getDateOfFix(), fixDate).getDays() == 0)
                 .collect(Collectors.<Car>toList());

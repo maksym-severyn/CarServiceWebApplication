@@ -13,6 +13,7 @@ import java.util.Objects;
 public class Car {
     private String registrationNumber;
     private CarName name;
+    private String model;
     private Integer manufactureYear;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate carAcceptedDate;
@@ -45,6 +46,7 @@ public class Car {
     public String toString() {
         return this.registrationNumber
                 + ' ' + this.name.getNameOfCar()
+                + ' ' + this.model
                 + ' ' + this.manufactureYear.toString()
                 + ' ' + this.carAcceptedDate;
     }

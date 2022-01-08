@@ -1,6 +1,7 @@
 [ {
   "registrationNumber" : "FNP 833",
   "name" : "OPEL",
+  "model" : "Astra",
   "manufactureYear" : 2007,
   "carAcceptedDate" : "2021-11-14",
   "dateOfFix" : "2022-01-02",

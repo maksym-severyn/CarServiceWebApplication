@@ -75,6 +75,23 @@
                         </tr>
                         <tr>
                             <th th:scope="'row'">
+                                <label th:for="'car_model_input'" th:text="#{car.model}"></label>
+                            </th>
+                            <td>
+                                <div th:if="${#fields.hasErrors('model')}" th:class="'alert alert-danger'">
+                                    <ul th:class="'error-list'">
+                                        <li th:each="err : ${#fields.errors('model')}"
+                                            th:text="${err}"></li>
+                                    </ul>
+                                </div>
+                                <input th:class="'form-control'" th:id="'car_model_input'" th:type="'text'"
+                                       th:placeholder="'model pojazdu'"
+                                       th:field="*{model}"
+                                       th:required="required">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th th:scope="'row'">
                                 <label th:for="'car_manufacture_year_input'" th:text="#{car.manufacture-year}"></label>
                             </th>
                             <td>

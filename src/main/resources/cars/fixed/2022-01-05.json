@@ -1,6 +1,7 @@
 [ {
   "registrationNumber" : "ATY 129",
   "name" : "HONDA",
+  "model" : "Civic",
   "manufactureYear" : 2013,
   "carAcceptedDate" : "2022-01-03",
   "dateOfFix" : "2022-01-05",

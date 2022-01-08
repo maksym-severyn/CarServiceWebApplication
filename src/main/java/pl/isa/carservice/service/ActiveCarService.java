@@ -71,8 +71,8 @@ public class ActiveCarService implements ActiveCarServiceInterface {
     }
 
     @Override
-    public List<CarDto> searchCarsByAllParams(String regNumb, CarName name, LocalDate acceptedDate, Integer manufactureYear) {
-        List<List<CarDto>> listOfCarLists = Arrays.asList(searchCarsByName(name), searchCarsByRegNumb(regNumb), searchCarsByAcceptedDate(acceptedDate), searchCarsByManufactureYear(manufactureYear));
+    public List<CarDto> searchCarsByAllParams(String regNumb, CarName name, String model, LocalDate acceptedDate, Integer manufactureYear) {
+        List<List<CarDto>> listOfCarLists = Arrays.asList(searchCarsByName(name), searchCarsByModel(model), searchCarsByRegNumb(regNumb), searchCarsByAcceptedDate(acceptedDate), searchCarsByManufactureYear(manufactureYear));
         return listOfCarLists.stream().flatMap(Collection::stream).distinct().collect(Collectors.<CarDto>toList());
     }
 
@@ -82,6 +82,15 @@ public class ActiveCarService implements ActiveCarServiceInterface {
         } else {
             var cars = getAllCarsToDto();
             return cars.stream().filter(c -> c.getName().getNameOfCar().toLowerCase().contains(name.getNameOfCar().toLowerCase())).collect(Collectors.<CarDto>toList());
+        }
+    }
+
+    private List<CarDto> searchCarsByModel(String model) {
+        if (model == null) {
+            return new ArrayList<>();
+        } else {
+            var cars = getAllCarsToDto();
+            return cars.stream().filter(c -> c.getModel().toLowerCase().contains(model.toLowerCase())).collect(Collectors.<CarDto>toList());
         }
     }
 

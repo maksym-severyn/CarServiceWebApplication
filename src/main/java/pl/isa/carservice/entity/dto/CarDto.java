@@ -26,6 +26,9 @@ public class CarDto {
     private String registrationNumber;
     @NotNull
     private CarName name;
+    @NotNull
+    @Size(max = 20)
+    private String model;
     @Min(value = 1900, message = "Rocznik ma być minimum 1900")
     @IsYearBeforeEqualsToday
     private Integer manufactureYear;
@@ -35,14 +38,6 @@ public class CarDto {
     private boolean isFixed;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateOfFix;
-
-    public CarDto(String registrationNumber, CarName name, Integer manufactureYear, LocalDate carAcceptedDate) {
-        this.registrationNumber = registrationNumber;
-        this.name = name;
-        this.manufactureYear = manufactureYear;
-        this.carAcceptedDate = carAcceptedDate;
-        this.isFixed = false;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -61,6 +56,7 @@ public class CarDto {
     public String toString() {
         return this.registrationNumber
                 + ' ' + this.name.getNameOfCar()
+                + ' ' + this.model
                 + ' ' + this.manufactureYear.toString()
                 + ' ' + this.carAcceptedDate;
     }

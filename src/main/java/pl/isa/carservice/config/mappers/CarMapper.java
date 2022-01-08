@@ -10,6 +10,7 @@ public class CarMapper {
         CarDto dto = new CarDto();
         dto.setRegistrationNumber(entity.getRegistrationNumber());
         dto.setName(entity.getName());
+        dto.setModel(entity.getModel());
         dto.setManufactureYear(entity.getManufactureYear());
         dto.setCarAcceptedDate(entity.getCarAcceptedDate());
         dto.setFixed(entity.isFixed());
@@ -21,6 +22,7 @@ public class CarMapper {
         Car entity = new Car();
         entity.setRegistrationNumber(dto.getRegistrationNumber());
         entity.setName(dto.getName());
+        entity.setModel(dto.getModel());
         entity.setManufactureYear(dto.getManufactureYear());
         entity.setCarAcceptedDate(dto.getCarAcceptedDate());
         entity.setFixed(dto.isFixed());

@@ -67,10 +67,11 @@ public class ActiveCarController {
     @GetMapping("search/form/params")
     public ModelAndView searchActiveCarsByParams(@RequestParam(value = "regNumb", required = false) String regNumb,
                                                  @RequestParam(value = "name", required = false) CarName name,
+                                                 @RequestParam(value = "carModel", required = false) String model,
                                                  @RequestParam(value = "acceptedDate", required = false) LocalDate acceptedDate,
                                                  @RequestParam(value = "manufactureYear", required = false) Integer manufactureYear) {
         ModelAndView mav = new ModelAndView("search-cars-results");
-        mav.addObject("activeCars", activeCarService.searchCarsByAllParams(regNumb, name, acceptedDate, manufactureYear));
+        mav.addObject("activeCars", activeCarService.searchCarsByAllParams(regNumb, name, model, acceptedDate, manufactureYear));
         return mav;
     }
 

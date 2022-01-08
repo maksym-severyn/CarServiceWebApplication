@@ -1,6 +1,7 @@
 [ {
   "registrationNumber" : "OIU 123",
   "name" : "PEUGEOT",
+  "model" : "5008",
   "manufactureYear" : 2008,
   "carAcceptedDate" : "2021-12-25",
   "dateOfFix" : "2022-01-03",
@@ -8,6 +9,7 @@
 }, {
   "registrationNumber" : "FNI 837",
   "name" : "OPEL",
+  "model" : "Corsa",
   "manufactureYear" : 2003,
   "carAcceptedDate" : "2021-12-14",
   "dateOfFix" : "2022-01-03",
