@@ -4,11 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import pl.isa.carservice.entity.Car;
+import pl.isa.carservice.entity.CarName;
 import pl.isa.carservice.repo.CarRepository;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -59,7 +60,49 @@ public class ActiveCarService implements ActiveCarServiceInterface {
         }
     }
 
+    @Override
+    public List<Car> searchCarsByAllParams(String regNumb, CarName name, LocalDate acceptedDate, Integer manufactureYear) {
+        List<List<Car>> listOfCarLists = Arrays.asList(searchCarsByName(name), searchCarsByRegNumb(regNumb), searchCarsByAcceptedDate(acceptedDate), searchCarsByManufactureYear(manufactureYear));
+        return listOfCarLists.stream().flatMap(Collection::stream).distinct().collect(Collectors.<Car>toList());
+    }
+
+    private List<Car> searchCarsByName(CarName name) {
+        if (name == null) {
+            return new ArrayList<>();
+        } else {
+            var cars = carRepo.returnCarList();
+            return cars.stream().filter(c -> c.getName().getNameOfCar().toLowerCase().contains(name.getNameOfCar().toLowerCase())).collect(Collectors.<Car>toList());
+        }
+    }
+
+    private List<Car> searchCarsByRegNumb(String regNumb) {
+        if (regNumb.isBlank()) {
+            return new ArrayList<>();
+        } else {
+            var cars = carRepo.returnCarList();
+            return cars.stream().filter(c -> c.getRegistrationNumber().toLowerCase().contains(regNumb.toLowerCase())).collect(Collectors.<Car>toList());
+        }
+    }
+
+    private List<Car> searchCarsByAcceptedDate(LocalDate acceptedDate) {
+        if (acceptedDate == null) {
+            return new ArrayList<>();
+        } else {
+            var cars = carRepo.returnCarList();
+            return cars.stream().filter(c -> Period.between(c.getCarAcceptedDate(), acceptedDate).getDays() == 0).collect(Collectors.<Car>toList());
+        }
+    }
+
+    private List<Car> searchCarsByManufactureYear(Integer manufactureYear) {
+        if (manufactureYear == null) {
+            return new ArrayList<>();
+        } else {
+            var cars = carRepo.returnCarList();
+            return cars.stream().filter(c -> c.getManufactureYear().equals(manufactureYear)).collect(Collectors.<Car>toList());
+        }
+    }
+
     private Predicate<Car> carPredicate(String param) {
-        return car -> car.toString().toLowerCase().contains(param.toLowerCase());
+        return car -> car.toString().toLowerCase().replaceAll(" ", "").contains(param.toLowerCase().replaceAll(" ", ""));
     }
 }

@@ -1,0 +1,8 @@
+[ {
+  "registrationNumber" : "ABC 111",
+  "name" : "BMW",
+  "manufactureYear" : 2018,
+  "carAcceptedDate" : "2022-01-01",
+  "dateOfFix" : "2022-01-08",
+  "fixed" : true
+} ]

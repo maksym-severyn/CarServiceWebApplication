@@ -37,11 +37,11 @@
                     </li>
 
                     <li th:class="'nav-item dropdown'">
-                        <a  th:class="${activePage} == 'cars-fixed' ? 'nav-link dropdown-toggle active' : 'nav-link dropdown-toggle'"
+                        <a  th:class="'nav-link dropdown-toggle'"
                             data-toggle="dropdown" role="button" th:href="@{/}"
                            th:text="#{application.navbar.fix}"></a>
                         <div th:class="'dropdown-menu'">
-                            <a th:class="'dropdown-item'" th:href="@{/}" th:text="#{application.navbar.fix-car}"></a>
+                            <a th:class="'dropdown-item'" th:href="@{/search/form}" th:text="#{application.navbar.fix-car}"></a>
                             <a th:class="'dropdown-item'" th:href="@{/cars/fixed}" th:text="#{application.navbar.fixed-car}"></a>
                         </div>
                     </li>
@@ -50,10 +50,15 @@
                         <a th:class="'nav-link disabled'" th:text="'|'"></a>
                         <a th:class="'nav-link disabled active'" th:href="@{/cars/new}" th:text="#{application.navbar.fixed-car}"></a>
                     </li>
+
+                    <li th:if="${activePage} == 'searched-cars-to-fix'" th:class="'d-none d-xl-flex'" >
+                        <a th:class="'nav-link disabled'" th:text="'|'"></a>
+                        <a th:class="'nav-link disabled active'" th:href="@{/cars/new}" th:text="#{application.navbar.fix-car}"></a>
+                    </li>
                 </ul>
 
-                <form th:class="'form-inline'" th:action="@{/search}" th:method="get">
-                    <input th:name="'param'"  th:class="'form-control mr-1'" th:type="'search'" th:placeholder="#{application.navbar.search-car}">
+                <form th:class="'form-inline d-inline'" th:action="@{/search}" th:method="get">
+                    <input th:name="param"  th:class="'form-control mr-1'" th:type="'search'" th:placeholder="#{application.navbar.search-car}">
                     <button th:class="'btn btn-light'" th:type="'submit'" th:text="#{application.navbar.search}"></button>
                 </form>
             </div>

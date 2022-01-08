@@ -5,11 +5,4 @@
   "carAcceptedDate" : "2022-01-03",
   "dateOfFix" : "2022-01-05",
   "fixed" : true
-}, {
-  "registrationNumber" : "KR 29R09",
-  "name" : "CITROEN",
-  "manufactureYear" : 2015,
-  "carAcceptedDate" : "2022-01-06",
-  "dateOfFix" : "2022-01-06",
-  "fixed" : true
 } ]

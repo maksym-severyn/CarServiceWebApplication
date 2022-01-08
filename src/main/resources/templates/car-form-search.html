@@ -18,33 +18,33 @@
 
 <div th:class="'container'">
     <div th:class="'row'">
-        <form th:object="${newCar}" th:action="@{/cars/new}" th:method="post">
+        <form th:action="@{/search/form/params}" th:method="get">
             <div th:class="'form-group'">
                 <div class="table-responsive">
                     <table th:class="'table table-striped text-center'">
                         <thead>
                         <tr>
-                            <th th:scope="'col'" th:text="#{table.add-new-car}"></th>
+                            <th th:scope="'col'" th:text="#{table.search-car}"></th>
                             <th th:scope="'col'" th:text="''"></th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
                             <th th:scope="'row'">
-                                <label th:for="'car_reg_numb_input'" th:text="#{car.registration-number}"></label>
+                                <label th:for="'car_reg_numb_input_s'" th:text="#{car.registration-number}"></label>
                             </th>
                             <td>
-                                <input th:class="'form-control'" th:id="'car_reg_numb_input'" th:type="'text'"
+                                <input th:class="'form-control'" th:id="'car_reg_numb_input_s'" th:type="'text'"
                                        th:placeholder="'np. ABC 12G3'"
-                                       th:field="*{registrationNumber}">
+                                       th:name="regNumb">
                             </td>
                         </tr>
                         <tr>
                             <th th:scope="'row'">
-                                <label th:for="'car_name_input'" th:text="#{car.name}"></label>
+                                <label th:for="'car_name_input_s'" th:text="#{car.name}"></label>
                             </th>
                             <td>
-                                <select th:class="'form-control'" th:id="'car_name_input'" th:field="*{name}">
+                                <select th:class="'form-control'" th:name="name" th:id="'car_name_input_s'">
                                     <option th:value="''" th:text="#{table.add-new-car.select-name}" th:disabled
                                             th:selected
                                             hidden></option>
@@ -55,27 +55,31 @@
                         </tr>
                         <tr>
                             <th th:scope="'row'">
-                                <label th:for="'car_manufacture_year_input'" th:text="#{car.manufacture-year}"></label>
+                                <label th:for="'car_manufacture_year_input_s'"
+                                       th:text="#{car.manufacture-year}"></label>
                             </th>
                             <td>
-                                <input th:class="'form-control'" th:id="'car_manufacture_year_input'" th:type="'number'"
-                                       th:placeholder="'np. 2020'" th:field="*{manufactureYear}">
+                                <input th:class="'form-control'" th:id="'car_manufacture_year_input_s'"
+                                       th:type="'number'"
+                                       th:name="manufactureYear" th:placeholder="'np. 2020'">
                             </td>
                         </tr>
                         <tr>
                             <th th:scope="'row'">
-                                <label th:for="'car_accepted_date_input'" th:text="#{car.accepted-date}"></label>
+                                <label th:for="'car_accepted_date_input_s'" th:text="#{car.accepted-date}"></label>
                             </th>
                             <td>
-                                <input th:class="'form-control'" th:id="'car_accepted_date_input'" th:type="date"
-                                       th:field="*{carAcceptedDate}">
+                                <input th:class="'form-control'" th:id="'car_accepted_date_input_s'"
+                                       th:name="acceptedDate" th:type="'date'">
                             </td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
-                <div th:class="'form-buttons'">
-                    <button type="submit" th:class="'btn btn-lg btn-secondary'" th:text="#{button.create}"></button>
+                <small th:class="'form-text text-danger'" th:text="#{car.search.add-comment}"></small>
+                <div th:class="'form-buttons mt-4'">
+                    <button type="submit" th:class="'btn btn-lg btn-secondary'"
+                            th:text="#{application.navbar.search}"></button>
                     <button type="reset" th:class="'btn btn-lg btn-outline-secondary reset-button'"
                             th:text="#{button.reset}"></button>
                 </div>

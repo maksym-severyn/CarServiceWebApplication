@@ -6,13 +6,6 @@
   "dateOfFix" : null,
   "fixed" : false
 }, {
-  "registrationNumber" : "ABC 111",
-  "name" : "BMW",
-  "manufactureYear" : 2018,
-  "carAcceptedDate" : "2022-01-01",
-  "dateOfFix" : null,
-  "fixed" : false
-}, {
   "registrationNumber" : "ASD 654",
   "name" : "AUDI",
   "manufactureYear" : 2015,
