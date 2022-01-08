@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import pl.isa.carservice.config.mappers.CarMapper;
-import pl.isa.carservice.entity.Car;
 import pl.isa.carservice.entity.CarName;
 import pl.isa.carservice.entity.dto.CarDto;
 import pl.isa.carservice.repo.CarRepository;
@@ -50,6 +49,14 @@ public class ActiveCarService implements ActiveCarServiceInterface {
     public void addCarToList(CarDto dto) {
         carRepo.addCarToList(carMapper.toEntity(dto));
         carRepo.saveCarListToBase();
+    }
+
+    public String isCarAlreadyExists(CarDto dto) {
+        if (carRepo.contains(carMapper.toEntity(dto))) {
+            return "Car already exists in active list!";
+        } else {
+            return "";
+        }
     }
 
     public List<CarDto> searchCarsByParam(String param) {

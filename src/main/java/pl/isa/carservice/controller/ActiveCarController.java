@@ -3,14 +3,19 @@ package pl.isa.carservice.controller;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import pl.isa.carservice.entity.Car;
 import pl.isa.carservice.entity.CarName;
 import pl.isa.carservice.entity.dto.CarDto;
 import pl.isa.carservice.service.ActiveCarService;
 import pl.isa.carservice.service.ActiveCarServiceInterface;
 
+import javax.validation.Valid;
 import java.time.LocalDate;
 
 @Controller
@@ -38,7 +43,16 @@ public class ActiveCarController {
     }
 
     @PostMapping("cars/new")
-    public String addNewCar(@ModelAttribute CarDto carDto) {
+    public String addNewCar(@Valid @ModelAttribute("newCar") CarDto carDto,
+                            BindingResult bindingResult) {
+        String err = ((ActiveCarService) activeCarService).isCarAlreadyExists(carDto);
+        if (!err.isEmpty()) {
+            ObjectError error = new ObjectError("globalError", err);
+            bindingResult.addError(error);
+        }
+        if (bindingResult.hasErrors()) {
+            return "car-form";
+        }
         ((ActiveCarService) activeCarService).addCarToList(carDto);
         return "car-form-success";
     }

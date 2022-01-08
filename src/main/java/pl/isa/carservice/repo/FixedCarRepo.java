@@ -10,7 +10,7 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Repository;
 import pl.isa.carservice.config.FilePaths;
 import pl.isa.carservice.entity.Car;
-import pl.isa.carservice.exception.CarNotFoundException;
+import pl.isa.carservice.exception.carnotfound.CarNotFoundException;
 import pl.isa.carservice.util.FileActions;
 
 import java.time.LocalDate;

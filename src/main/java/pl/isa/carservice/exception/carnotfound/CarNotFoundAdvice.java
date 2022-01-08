@@ -1,4 +1,4 @@
-package pl.isa.carservice.exception;
+package pl.isa.carservice.exception.carnotfound;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;

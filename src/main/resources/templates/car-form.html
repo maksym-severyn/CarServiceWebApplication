@@ -9,6 +9,7 @@
     <!--/* Bootstrap CSS */-->
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
     <link th:href="@{/css/styles.css}" rel="stylesheet">
+    <link th:href="@{/css/form-errors.css}" rel="stylesheet">
 
 </head>
 
@@ -34,9 +35,21 @@
                                 <label th:for="'car_reg_numb_input'" th:text="#{car.registration-number}"></label>
                             </th>
                             <td>
-                                <input th:class="'form-control'" th:id="'car_reg_numb_input'" th:type="'text'"
-                                       th:placeholder="'np. ABC 12G3'"
-                                       th:field="*{registrationNumber}">
+                                <div th:if="${#fields.hasErrors('registrationNumber')}" th:class="'alert alert-danger'">
+                                    <ul th:class="'error-list'">
+                                        <li th:each="err : ${#fields.errors('registrationNumber')}"
+                                            th:text="${err}"></li>
+                                    </ul>
+                                </div>
+                                <div th:if="${#fields.hasGlobalErrors()}" th:class="'alert alert-danger'">
+                                    <ul th:class="'error-list'">
+                                        <li th:text="#{globalError.newCar.registrationNumber}"></li>
+                                    </ul>
+                                </div>
+                                <input th:class="'form-control text-uppercase'" th:id="'car_reg_numb_input'" th:type="'text'"
+                                       th:placeholder="'ABC 12G3'"
+                                       th:field="*{registrationNumber}"
+                                       th:required="required">
                             </td>
                         </tr>
                         <tr>
@@ -44,7 +57,14 @@
                                 <label th:for="'car_name_input'" th:text="#{car.name}"></label>
                             </th>
                             <td>
-                                <select th:class="'form-control'" th:id="'car_name_input'" th:field="*{name}">
+                                <div th:if="${#fields.hasErrors('name')}" th:class="'alert alert-danger'">
+                                    <ul th:class="'error-list'">
+                                        <li th:each="err : ${#fields.errors('name')}"
+                                            th:text="${err}"></li>
+                                    </ul>
+                                </div>
+                                <select th:class="'form-control'" th:id="'car_name_input'" th:field="*{name}"
+                                        th:required="required">
                                     <option th:value="''" th:text="#{table.add-new-car.select-name}" th:disabled
                                             th:selected
                                             hidden></option>
@@ -58,8 +78,14 @@
                                 <label th:for="'car_manufacture_year_input'" th:text="#{car.manufacture-year}"></label>
                             </th>
                             <td>
+                                <div th:if="${#fields.hasErrors('manufactureYear')}" th:class="'alert alert-danger'">
+                                    <ul th:class="'error-list'">
+                                        <li th:each="err : ${#fields.errors('manufactureYear')}"
+                                            th:text="${err}"></li>
+                                    </ul>
+                                </div>
                                 <input th:class="'form-control'" th:id="'car_manufacture_year_input'" th:type="'number'"
-                                       th:placeholder="'np. 2020'" th:field="*{manufactureYear}">
+                                       th:placeholder="'np. 2020'" th:field="*{manufactureYear}" th:required="required">
                             </td>
                         </tr>
                         <tr>
@@ -67,8 +93,16 @@
                                 <label th:for="'car_accepted_date_input'" th:text="#{car.accepted-date}"></label>
                             </th>
                             <td>
+                                <div th:if="${#fields.hasErrors('carAcceptedDate')}" th:class="'alert alert-danger'">
+                                    <ul th:class="'error-list'">
+                                        <li th:each="err : ${#fields.errors('carAcceptedDate')}"
+                                            th:text="${err}"></li>
+                                    </ul>
+                                </div>
                                 <input th:class="'form-control'" th:id="'car_accepted_date_input'" th:type="date"
-                                       th:field="*{carAcceptedDate}">
+                                       th:max="${T(java.time.LocalDate).now()}"
+                                       th:field="*{carAcceptedDate}"
+                                       th:required="required">
                             </td>
                         </tr>
                         </tbody>

@@ -3,7 +3,7 @@ package pl.isa.carservice.service;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import pl.isa.carservice.entity.Car;
-import pl.isa.carservice.exception.CarNotFoundException;
+import pl.isa.carservice.exception.carnotfound.CarNotFoundException;
 import pl.isa.carservice.repo.CarRepository;
 
 import java.time.LocalDate;

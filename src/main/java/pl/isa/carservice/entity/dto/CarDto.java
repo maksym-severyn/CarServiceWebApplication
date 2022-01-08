@@ -6,7 +6,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 import pl.isa.carservice.entity.CarName;
+import pl.isa.carservice.validators.datebeforeequalstoday.IsDateBeforeEqualsToday;
+import pl.isa.carservice.validators.yearbeforeequalstoday.IsYearBeforeEqualsToday;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -15,10 +21,16 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CarDto {
+    @NotBlank
+    @Size(max = 20)
     private String registrationNumber;
+    @NotNull
     private CarName name;
+    @Min(value = 1900, message = "Rocznik ma być minimum 1900")
+    @IsYearBeforeEqualsToday
     private Integer manufactureYear;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @IsDateBeforeEqualsToday
     private LocalDate carAcceptedDate;
     private boolean isFixed;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
