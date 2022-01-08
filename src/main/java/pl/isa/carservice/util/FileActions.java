@@ -29,6 +29,7 @@ public class FileActions<E> {
         try {
             return mapper.readValue(new FileReader(path), listType);
         } catch (IOException ex) {
+            System.out.println("\n!!! Broken file !!!");
             ex.printStackTrace();
             return new ArrayList<>();
         }
@@ -47,6 +48,7 @@ public class FileActions<E> {
                 try {
                     objects.add(mapper.readValue(j, listType));
                 } catch (IOException ex) {
+                    System.out.println("\n!!! Broken file !!!");
                     ex.printStackTrace();
                 }
             });
