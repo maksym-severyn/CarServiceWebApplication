@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.isa.carservice.entity.Car;
 import pl.isa.carservice.entity.CarName;
+import pl.isa.carservice.entity.dto.CarDto;
 import pl.isa.carservice.service.ActiveCarService;
 import pl.isa.carservice.service.ActiveCarServiceInterface;
 
@@ -31,14 +32,14 @@ public class ActiveCarController {
 
     @GetMapping("cars/new")
     public String fillNewCar(Model model) {
-        model.addAttribute("newCar", new Car());
+        model.addAttribute("newCar", new CarDto());
         model.addAttribute("activePage", "new-car");
         return "car-form";
     }
 
     @PostMapping("cars/new")
-    public String addNewCar(@ModelAttribute Car car) {
-        ((ActiveCarService) activeCarService).addCarToList(car);
+    public String addNewCar(@ModelAttribute CarDto carDto) {
+        ((ActiveCarService) activeCarService).addCarToList(carDto);
         return "car-form-success";
     }
 
@@ -65,6 +66,4 @@ public class ActiveCarController {
         mav.addObject("activePage", "searched-cars-to-fix");
         return mav;
     }
-
-
 }

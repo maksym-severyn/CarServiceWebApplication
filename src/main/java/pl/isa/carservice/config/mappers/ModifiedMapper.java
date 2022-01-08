@@ -1,4 +1,4 @@
-package pl.isa.carservice.config;
+package pl.isa.carservice.config.mappers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;

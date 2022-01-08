@@ -1,10 +1,10 @@
 package pl.isa.carservice.service;
 
-import pl.isa.carservice.entity.Car;
+import pl.isa.carservice.entity.dto.CarDto;
 
 import java.util.List;
 
 public interface CarService {
-    List<Car> getAllCars();
-    List<Car> getAllCarsSorted();
+    List<CarDto> getAllCarsToDto();
+    List<CarDto> getAllCarsSorted();
 }
