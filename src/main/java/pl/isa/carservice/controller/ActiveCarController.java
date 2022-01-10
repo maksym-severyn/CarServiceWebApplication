@@ -45,7 +45,10 @@ public class ActiveCarController {
     @PostMapping("cars/new")
     public String addNewCar(@Valid @ModelAttribute("newCar") CarDto carDto,
                             BindingResult bindingResult) {
-        String err = ((ActiveCarService) activeCarService).isCarAlreadyExists(carDto);
+        String err = "";
+        if (activeCarService instanceof ActiveCarService) {
+            err = ((ActiveCarService) activeCarService).isCarAlreadyExists(carDto);
+        }
         if (!err.isEmpty()) {
             ObjectError error = new ObjectError("globalError", err);
             bindingResult.addError(error);
@@ -53,7 +56,9 @@ public class ActiveCarController {
         if (bindingResult.hasErrors()) {
             return "car-form";
         }
-        ((ActiveCarService) activeCarService).addCarToList(carDto);
+        if (activeCarService instanceof ActiveCarService) {
+            ((ActiveCarService) activeCarService).addCarToList(carDto);
+        }
         return "car-form-success";
     }
 
