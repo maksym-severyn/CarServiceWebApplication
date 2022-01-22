@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title th:text="#{car.add.success.title}"></title>
+
+    <!--/* Bootstrap CSS */-->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+
+</head>
+
+<body th:class="'bg-light p-3'">
+<div th:insert="~{fragments/navbar :: mynavbar}"></div>
+<hr>
+<div th:class="'container'">
+
+    <div th:class="'row'">
+
+        <div th:class="'p-3 form d-block bg-white form-group col-12'">
+            <h4 th:text="#{car.add.success}"></h4>
+        </div>
+
+        <div th:insert="~{/fragments/go-back-button :: mainbutton}"></div>
+    </div>
+
+</div>
+<hr>
+
+
+<script th:src="@{/js/jquery-3.3.1.slim.min.js}"></script>
+<script th:src="@{/js/popper.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+</html>

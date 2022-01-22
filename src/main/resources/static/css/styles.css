@@ -1,0 +1,28 @@
+.logo {
+    height: 27px;
+    width: 83px;
+}
+
+.btn-xs {
+    font-size: .875rem;
+    line-height: .5;
+    border-radius: .2rem;
+}
+
+.fix-button {
+    padding-bottom: 1%;
+    margin: 0;
+}
+
+.container {
+    max-width: 95%;
+}
+
+.table td, .table th {
+    vertical-align: middle;
+}
+
+/*.active {*/
+/*    font-weight: ;*/
+/*    color: #545252;*/
+/*}*/

@@ -1,0 +1,33 @@
+[ {
+  "registrationNumber" : "ABC 557",
+  "name" : "BMW",
+  "model" : "i8",
+  "manufactureYear" : 2018,
+  "carAcceptedDate" : "2022-01-01",
+  "dateOfFix" : null,
+  "fixed" : false
+}, {
+  "registrationNumber" : "ASD 654",
+  "name" : "AUDI",
+  "model" : "A3",
+  "manufactureYear" : 2015,
+  "carAcceptedDate" : "2022-01-02",
+  "dateOfFix" : null,
+  "fixed" : false
+}, {
+  "registrationNumber" : "DW 89G890",
+  "name" : "DACIA",
+  "model" : "Logan",
+  "manufactureYear" : 2009,
+  "carAcceptedDate" : "2022-01-07",
+  "dateOfFix" : null,
+  "fixed" : false
+}, {
+  "registrationNumber" : "IO 590N290",
+  "name" : "MAYBACH",
+  "model" : "57",
+  "manufactureYear" : 2021,
+  "carAcceptedDate" : "2022-01-07",
+  "dateOfFix" : null,
+  "fixed" : false
+} ]

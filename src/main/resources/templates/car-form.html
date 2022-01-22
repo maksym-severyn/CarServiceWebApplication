@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title th:text="#{car.fixed.title}"></title>
+
+    <!--/* Bootstrap CSS */-->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+    <link th:href="@{/css/form-errors.css}" rel="stylesheet">
+
+</head>
+
+<body th:class="'bg-light p-3'">
+<div th:insert="~{fragments/navbar :: mynavbar}"></div>
+<hr>
+
+<div th:class="'container'">
+    <div th:class="'row'">
+        <form th:object="${newCar}" th:action="@{/cars/new}" th:method="post">
+            <div th:class="'form-group'">
+                <div class="table-responsive">
+                    <table th:class="'table table-striped text-center'">
+                        <thead>
+                        <tr>
+                            <th th:scope="'col'" th:text="#{table.add-new-car}"></th>
+                            <th th:scope="'col'" th:text="''"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th th:scope="'row'">
+                                <label th:for="'car_reg_numb_input'" th:text="#{car.registration-number}"></label>
+                            </th>
+                            <td>
+                                <div th:if="${#fields.hasErrors('registrationNumber')}" th:class="'alert alert-danger'">
+                                    <ul th:class="'error-list'">
+                                        <li th:each="err : ${#fields.errors('registrationNumber')}"
+                                            th:text="${err}"></li>
+                                    </ul>
+                                </div>
+                                <div th:if="${#fields.hasGlobalErrors()}" th:class="'alert alert-danger'">
+                                    <ul th:class="'error-list'">
+                                        <li th:text="#{globalError.newCar.registrationNumber}"></li>
+                                    </ul>
+                                </div>
+                                <input th:class="'form-control text-uppercase'" th:id="'car_reg_numb_input'" th:type="'text'"
+                                       th:placeholder="'ABC 12G3'"
+                                       th:field="*{registrationNumber}"
+                                       th:required="required">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th th:scope="'row'">
+                                <label th:for="'car_name_input'" th:text="#{car.name}"></label>
+                            </th>
+                            <td>
+                                <div th:if="${#fields.hasErrors('name')}" th:class="'alert alert-danger'">
+                                    <ul th:class="'error-list'">
+                                        <li th:each="err : ${#fields.errors('name')}"
+                                            th:text="${err}"></li>
+                                    </ul>
+                                </div>
+                                <select th:class="'form-control'" th:id="'car_name_input'" th:field="*{name}"
+                                        th:required="required">
+                                    <option th:value="''" th:text="#{table.add-new-car.select-name}" th:disabled
+                                            th:selected
+                                            hidden></option>
+                                    <option th:each="carName : ${T(pl.isa.carservice.entity.CarName).values()}"
+                                            th:value="${carName}" th:text="${carName.nameOfCar}"></option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th th:scope="'row'">
+                                <label th:for="'car_model_input'" th:text="#{car.model}"></label>
+                            </th>
+                            <td>
+                                <div th:if="${#fields.hasErrors('model')}" th:class="'alert alert-danger'">
+                                    <ul th:class="'error-list'">
+                                        <li th:each="err : ${#fields.errors('model')}"
+                                            th:text="${err}"></li>
+                                    </ul>
+                                </div>
+                                <input th:class="'form-control'" th:id="'car_model_input'" th:type="'text'"
+                                       th:placeholder="'model pojazdu'"
+                                       th:field="*{model}"
+                                       th:required="required">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th th:scope="'row'">
+                                <label th:for="'car_manufacture_year_input'" th:text="#{car.manufacture-year}"></label>
+                            </th>
+                            <td>
+                                <div th:if="${#fields.hasErrors('manufactureYear')}" th:class="'alert alert-danger'">
+                                    <ul th:class="'error-list'">
+                                        <li th:each="err : ${#fields.errors('manufactureYear')}"
+                                            th:text="${err}"></li>
+                                    </ul>
+                                </div>
+                                <input th:class="'form-control'" th:id="'car_manufacture_year_input'" th:type="'number'"
+                                       th:placeholder="'np. 2020'" th:field="*{manufactureYear}" th:required="required">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th th:scope="'row'">
+                                <label th:for="'car_accepted_date_input'" th:text="#{car.accepted-date}"></label>
+                            </th>
+                            <td>
+                                <div th:if="${#fields.hasErrors('carAcceptedDate')}" th:class="'alert alert-danger'">
+                                    <ul th:class="'error-list'">
+                                        <li th:each="err : ${#fields.errors('carAcceptedDate')}"
+                                            th:text="${err}"></li>
+                                    </ul>
+                                </div>
+                                <input th:class="'form-control'" th:id="'car_accepted_date_input'" th:type="date"
+                                       th:max="${T(java.time.LocalDate).now()}"
+                                       th:field="*{carAcceptedDate}"
+                                       th:required="required">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div th:class="'form-buttons'">
+                    <button type="submit" th:class="'btn btn-lg btn-secondary'" th:text="#{button.create}"></button>
+                    <button type="reset" th:class="'btn btn-lg btn-outline-secondary reset-button'"
+                            th:text="#{button.reset}"></button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<script th:src="@{/js/jquery-3.3.1.slim.min.js}"></script>
+<script th:src="@{/js/popper.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+</html>
