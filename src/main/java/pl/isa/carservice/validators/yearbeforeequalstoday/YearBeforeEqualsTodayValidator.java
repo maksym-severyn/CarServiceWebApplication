@@ -12,10 +12,6 @@ public class YearBeforeEqualsTodayValidator implements ConstraintValidator<IsYea
 
     @Override
     public boolean isValid(Integer yearField, ConstraintValidatorContext cxt) {
-        if (yearField == null) {
-            return false;
-        }
-        Integer year = LocalDate.now().getYear();
-        return (yearField < year || yearField.equals(year));
+        return yearField != null && yearField <= LocalDate.now().getYear();
     }
 }

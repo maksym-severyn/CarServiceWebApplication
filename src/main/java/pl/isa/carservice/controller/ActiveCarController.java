@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import pl.isa.carservice.entity.CarName;
 import pl.isa.carservice.entity.dto.CarDto;
-import pl.isa.carservice.service.ActiveCarService;
 import pl.isa.carservice.service.ActiveCarServiceInterface;
 
 import javax.validation.Valid;
@@ -46,9 +45,7 @@ public class ActiveCarController {
     public String addNewCar(@Valid @ModelAttribute("newCar") CarDto carDto,
                             BindingResult bindingResult) {
         String err = "";
-        if (activeCarService instanceof ActiveCarService) {
-            err = ((ActiveCarService) activeCarService).isCarAlreadyExists(carDto);
-        }
+        err = activeCarService.isCarAlreadyExists(carDto);
         if (!err.isEmpty()) {
             ObjectError error = new ObjectError("globalError", err);
             bindingResult.addError(error);
@@ -56,9 +53,7 @@ public class ActiveCarController {
         if (bindingResult.hasErrors()) {
             return "car-form";
         }
-        if (activeCarService instanceof ActiveCarService) {
-            ((ActiveCarService) activeCarService).addCarToList(carDto);
-        }
+        activeCarService.addCarToList(carDto);
         return "car-form-success";
     }
 

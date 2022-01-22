@@ -9,7 +9,7 @@ import java.lang.annotation.*;
 @Target( { ElementType.METHOD, ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
 public @interface IsYearBeforeEqualsToday {
-    String message() default "Date must equals today or earlier";
+    String message() default "The year must be today or earlier";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

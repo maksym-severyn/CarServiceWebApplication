@@ -9,4 +9,6 @@ import java.util.List;
 public interface ActiveCarServiceInterface extends CarService {
     List<CarDto> searchCarsByParam(String param);
     List<CarDto> searchCarsByAllParams(String regNumb, CarName name, String model, LocalDate acceptedDate, Integer manufactureYear);
+    String isCarAlreadyExists(CarDto dto);
+    void addCarToList(CarDto dto);
 }

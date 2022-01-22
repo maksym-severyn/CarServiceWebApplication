@@ -46,11 +46,13 @@ public class ActiveCarService implements ActiveCarServiceInterface {
         return cars.stream().sorted(acceptedDateComparator.reversed()).collect(Collectors.<CarDto>toList());
     }
 
+    @Override
     public void addCarToList(CarDto dto) {
         carRepo.addCarToList(carMapper.toEntity(dto));
         carRepo.saveCarListToBase();
     }
 
+    @Override
     public String isCarAlreadyExists(CarDto dto) {
         if (carRepo.contains(carMapper.toEntity(dto))) {
             return "Car already exists in active list!";
@@ -59,6 +61,7 @@ public class ActiveCarService implements ActiveCarServiceInterface {
         }
     }
 
+    @Override
     public List<CarDto> searchCarsByParam(String param) {
         if (param.isBlank()) {
             return getAllCarsToDto();
@@ -122,6 +125,6 @@ public class ActiveCarService implements ActiveCarServiceInterface {
     }
 
     private Predicate<CarDto> carPredicate(String param) {
-        return car -> car.toString().toLowerCase().replaceAll(" ", "").contains(param.toLowerCase().replaceAll(" ", ""));
+        return car -> car.toString().toLowerCase().replace(" ", "").contains(param.toLowerCase().replace(" ", ""));
     }
 }

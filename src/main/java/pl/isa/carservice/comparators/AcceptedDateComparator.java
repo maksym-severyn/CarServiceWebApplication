@@ -9,7 +9,7 @@ import java.util.Comparator;
 @Component
 public class AcceptedDateComparator implements Comparator<CarDto> {
     @Override
-    public int compare(CarDto car, CarDto t1) {
-        return Period.between(car.getCarAcceptedDate(), t1.getCarAcceptedDate()).getDays();
+    public int compare(CarDto c1, CarDto c2) {
+        return Period.between(c1.getCarAcceptedDate(), c2.getCarAcceptedDate()).getDays();
     }
 }
